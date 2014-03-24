@@ -1,0 +1,19 @@
+inherit gnome2
+
+NAME="geoclue2"
+VERSION=2.0.0
+RELEASE=1
+CATEGORY="Net"
+SUMMARY="D-Bus geoinformation service"
+DESCRIPTION="Geoclue is a modular geoinformation service built on top of the
+D-Bus messaging system. The goal of the Geoclue project is to make creating
+location-aware applications as simple as possible."
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/GeoClue"
+SRC_URI="http://www.freedesktop.org/software/geoclue/releases/${VERSION%.*}/geoclue-${VERSION}.tar.xz"
+SRC_DIR="geoclue-${VERSION}"
+
+PKG_NAMES="${NAME} ${NAME}-doc"
+geoclue2_CONTENTS="etc/ usr/bin/ usr/lib/pkgconfig/ usr/libexec/
+	usr/share/dbus-1/ usr/share/doc/ usr/share/geoclue-2.0/"
+geoclue2_doc_CATEGORY="Doc"
+geoclue2_doc_CONTENTS="usr/share/gtk-doc/"

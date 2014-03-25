@@ -17,3 +17,5 @@ geoclue2_CONTENTS="etc/ usr/bin/ usr/lib/pkgconfig/ usr/libexec/
 	usr/share/dbus-1/ usr/share/doc/ usr/share/geoclue-2.0/"
 geoclue2_doc_CATEGORY="Doc"
 geoclue2_doc_CONTENTS="usr/share/gtk-doc/"
+
+CYGCONF_ARGS="--with-dbus-service-user=SYSTEM"

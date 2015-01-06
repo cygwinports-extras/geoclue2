@@ -1,7 +1,7 @@
 inherit gnome2
 
 NAME="geoclue2"
-VERSION=2.0.0
+VERSION=2.1.10
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="D-Bus geoinformation service"
@@ -11,11 +11,23 @@ location-aware applications as simple as possible."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/GeoClue"
 SRC_URI="http://www.freedesktop.org/software/geoclue/releases/${VERSION%.*}/geoclue-${VERSION}.tar.xz"
 SRC_DIR="geoclue-${VERSION}"
+PATCH_URI="2.1.10-gtk-doc.patch"
 
-PKG_NAMES="${NAME} ${NAME}-doc"
-geoclue2_CONTENTS="etc/ usr/bin/ usr/lib/pkgconfig/ usr/libexec/
-	usr/share/dbus-1/ usr/share/doc/ usr/share/geoclue-2.0/"
+PKG_NAMES="${NAME} ${NAME}-demo ${NAME}-devel ${NAME}-doc"
+geoclue2_CONTENTS="--exclude=demos etc/ usr/libexec/ usr/share/dbus-1/system-services/ usr/share/doc/"
+geoclue2_demo_REQUIRES=${NAME}
+geoclue2_demo_CONTENTS="usr/libexec/geoclue-2.0/demos/ usr/share/applications/"
+geoclue2_devel_REQUIRES=${NAME}
+geoclue2_devel_CONTENTS="usr/lib/pkgconfig/ usr/share/dbus-1/interfaces/"
 geoclue2_doc_CATEGORY="Doc"
-geoclue2_doc_CONTENTS="usr/share/gtk-doc/"
+geoclue2_doc_CONTENTS="usr/share/gtk-doc/html/geoclue-2/"
 
-CYGCONF_ARGS="--with-dbus-service-user=SYSTEM"
+DIFF_EXCLUDES="org.freedesktop.GeoClue2.conf"
+
+CYGCONF_ARGS="
+	--with-dbus-service-user=SYSTEM
+	--enable-demo-agent
+	--disable-3g-source
+	--disable-cdma-source
+	--disable-modem-gps-source
+"

@@ -1,0 +1,15 @@
+--- origsrc/geoclue-2.1.10/demo/Makefile.am	2014-04-09 19:17:43.000000000 -0500
++++ src/geoclue-2.1.10/demo/Makefile.am	2015-01-06 13:28:34.225247600 -0600
+@@ -35,9 +35,9 @@ agent_CFLAGS = $(DEMO_AGENT_CFLAGS)
+ 	       -DABS_SRCDIR=\""$(abs_srcdir)"\"	   \
+ 	       -I$(top_builddir)/src		   \
+ 	       -I$(top_builddir)/src/agent	   \
+-	       -I$(top_builddir)/src/public-api
+-agent_LDADD = $(DEMO_AGENT_LIBS) \
+-	      $(top_builddir)/src/agent/libgeoclue-agent.la
++	       -I$(top_srcdir)/src/public-api
++agent_LDADD =  $(top_builddir)/src/agent/libgeoclue-agent.la	\
++	$(DEMO_AGENT_LIBS)
+ 
+ -include $(top_srcdir)/git.mk
+ 

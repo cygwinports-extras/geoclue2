@@ -11,7 +11,10 @@ location-aware applications as simple as possible."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/GeoClue"
 SRC_URI="http://www.freedesktop.org/software/geoclue/releases/${VERSION%.*}/geoclue-${VERSION}.tar.xz"
 SRC_DIR="geoclue-${VERSION}"
-PATCH_URI="2.1.10-gtk-doc.patch"
+PATCH_URI="
+	2.1.10-gtk-doc.patch
+	2.1.10-demo-build.patch
+"
 
 PKG_NAMES="${NAME} ${NAME}-demo ${NAME}-devel ${NAME}-doc"
 geoclue2_CONTENTS="--exclude=demos etc/ usr/libexec/ usr/share/dbus-1/system-services/ usr/share/doc/"
